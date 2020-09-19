@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+exec 2>&1
+
+set -e
+
+export TOKEN="{{ cfg.general.token }}"
+export RETICULUM_BOT_ACCESS_KEY="{{ cfg.general.reticulum_bot_access_key }}"
+export RETICULUM_HOST="{{ cfg.general.reticulum_host }}"
+export HUBS_HOSTS="{{ cfg.general.hubs_hosts }}"
+export HUBS_HOOK="{{ cfg.general.hubs_hook }}"
+export SHARD_ID="{{ cfg.general.shard_id }}"
+export SHARD_COUNT="{{ cfg.general.shard_count }}"
+export VERBOSE="{{ cfg.general.verbose }}"
+export LOCALE="{{ cfg.general.locale }}"
+export TIMEZONE="{{ cfg.general.timezone }}"
+export STATSD_HOST="{{ cfg.general.statsd_host }}"
+export STATSD_PREFIX="{{ cfg.general.statsd_prefix }}"
+export DEFAULT_SCENE_URL="{{ cfg.general.default_scene_url }}"
+export SENTRY_DSN="{{ cfg.general.sentry_dsn }}"
+
+cd {{pkg.svc_path}}
+
+exec node {{pkg.svc_static_path}}/src/index.js
